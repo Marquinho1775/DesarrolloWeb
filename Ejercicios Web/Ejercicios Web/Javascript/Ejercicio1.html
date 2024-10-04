@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1: Eventos y funciones</title>
+    <script>
+        function verificar(control, max, progressText) {
+            // Obtener el número actual de caracteres digitados
+            let caracteresActuales = control.value.length;
+            
+            // Evitar que el usuario escriba más del número máximo de caracteres
+            if (caracteresActuales > max) {
+                control.value = control.value.substring(0, max);
+                caracteresActuales = max;
+            }
+            
+            // Actualizar el texto que muestra los caracteres restantes
+            progressText.innerHTML = "Usted tiene un espacio de " + (max - caracteresActuales) + " caracteres restantes.";
+        }
+    </script>
+</head>
+<body>
+    <label for="comentarios">Comentarios Adicionales:</label><br>
+    <textarea id="comentarios" oninput="verificar(this, 230, document.getElementById('leyenda'))" rows="4" cols="50">Este es un comentario.</textarea><br>
+    <span id="leyenda">Usted tiene un espacio de 208 caracteres restantes.</span>
+</body>
+</html>
